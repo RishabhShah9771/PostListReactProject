@@ -12,7 +12,8 @@ const PostList = () => {
           {isPostDetail.map((postDetail) => {
             return (
               <Post
-                key={Math.random().toString()}
+                key={postDetail.id}
+                id={postDetail.id}
                 author={postDetail.author}
                 detail={postDetail.detail}
               />

@@ -9,6 +9,8 @@ import RootLayout from "./Routes/RootLayoutComponent";
 import PostHomePageComponent from "./Routes/PostHomeComponent";
 import { loaderDetailHandler } from "./components/PostComponent/PostLoader";
 import { SubmitFormActionHandler } from "./components/NewPostComponent/SubmitActionHandler";
+import PostDetails from "./components/PostDetailComponent/PostDetails";
+import { PostDetailLoaderFn } from "./components/PostDetailComponent/PostDetailLoader";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,11 @@ const router = createBrowserRouter([
             path: "/create-post",
             element: <NewPost />,
             action: SubmitFormActionHandler,
+          },
+          {
+            path: "/:id",
+            element: <PostDetails />,
+            loader: PostDetailLoaderFn,
           },
         ],
       },
