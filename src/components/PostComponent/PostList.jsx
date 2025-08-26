@@ -1,27 +1,12 @@
-import NewPost from "../NewPostComponent/NewPost";
 import Post from "./Post";
 import classes from "./PostList.module.css";
-import Modal from "../ModalComponent/Modal";
-import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
-const PostList = ({ modalIsVisible, onHideModal }) => {
-  const [isPostDetail, setIsPostDetail] = useState([]);
-
-  function addPostDetailHandler(postDetail) {
-    setIsPostDetail((prevPostDetail) => {
-      return [postDetail, ...prevPostDetail];
-    });
-  }
+const PostList = () => {
+  const isPostDetail = useLoaderData();
 
   return (
     <>
-      {modalIsVisible ? (
-        <Modal onClose={onHideModal}>
-          <NewPost onCancel={onHideModal} onAddPost={addPostDetailHandler} />
-        </Modal>
-      ) : (
-        false
-      )}
       {isPostDetail.length > 0 && (
         <ul className={classes.posts}>
           {isPostDetail.map((postDetail) => {
